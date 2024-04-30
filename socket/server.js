@@ -1,14 +1,25 @@
 
+require('dotenv').config();
+
 const express = require("express");
 
 const app = express();
+
+
+
+
+app.get('/', (req, res) => {
+    res.send('Server is running')
+}
+)
+
 const server = app.listen('5000', (req, res) => {
     console.log("server is running on port 5000");
+    console.log(process.env.SOCKET_SERVER_URL);
 })
-
 const io = require("socket.io")(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: process.env.SOCKET_SERVER_URL,
     },
     pingTimeout: 60 * 1000,
 });
