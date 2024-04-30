@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 
 const server = app.listen('5000', (req, res) => {
     console.log("server is running on port 5000");
-    console.log(process.env.SOCKET_SERVER_URL);
 })
 const io = require("socket.io")(server, {
     cors: {
