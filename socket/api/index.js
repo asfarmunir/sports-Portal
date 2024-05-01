@@ -1,14 +1,14 @@
 
-
+const path = require("path");
 const express = require("express");
-require("dotenv").config();
+require("dotenv").config(
+    { path: path.resolve(__dirname, "../.env") }
+);
 
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send(`Server is running and socket is connected from ${process.env.SOCKET_CLIENT_URL} `)
-
-}
+    res.send(`Server is running and socket is connected from ${process.env.SOCKET_CLIENT_URL} `)}
 )
 
 const PORT = process.env.PORT || 5000;
