@@ -1,24 +1,25 @@
 
-require('dotenv').config();
 
 const express = require("express");
+require("dotenv").config();
 
 const app = express();
 
-
-
-
 app.get('/', (req, res) => {
-    res.send('Server is running')
+    res.send(`Server is running and socket is connected from ${process.env.SOCKET_CLIENT_URL} `)
+
 }
 )
 
-const server = app.listen('5000', (req, res) => {
-    console.log("server is running on port 5000");
+const PORT = process.env.PORT || 5000;
+
+const server = app.listen( PORT , (req, res) => {
+    console.log(process.env.SOCKET_CLIENT_URL);
+    console.log("server is running on port "+ PORT );
 })
 const io = require("socket.io")(server, {
     cors: {
-        origin: process.env.SOCKET_SERVER_URL,
+        origin: process.env.SOCKET_CLIENT_URL, 
     },
     pingTimeout: 60 * 1000,
 });
