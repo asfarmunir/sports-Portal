@@ -1,11 +1,14 @@
 
 const path = require("path");
+const cors = require("cors");
 const express = require("express");
 require("dotenv").config(
     { path: path.resolve(__dirname, "../.env") }
 );
 
-const app = express();
+const app = express(
+    { origin: '*' }
+);
 
 app.get('/', (req, res) => {
     res.send(`Server is running and socket is connected from ${process.env.SOCKET_CLIENT_URL} `)}
