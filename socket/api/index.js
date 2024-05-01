@@ -7,7 +7,7 @@ require("dotenv").config(
 );
 
 const app = express(
-    { origin: '*' }
+    { origin: process.env.SOCKET_CLIENT_URL }
 );
 
 app.get('/', (req, res) => {
@@ -22,7 +22,7 @@ const server = app.listen( PORT , (req, res) => {
 })
 const io = require("socket.io")(server, {
     cors: {
-        origin: true, 
+        origin: process.env.SOCKET_CLIENT_URL, 
     },
     pingTimeout: 60 * 1000,
 });
