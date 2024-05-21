@@ -12,7 +12,6 @@ import { getPointableOfEvent } from "@/lib/database/actions/pointable.action";
 
 const page = async ({ params: { id } }) => {
   const pointable = await getPointableOfEvent(id);
-  console.log("🚀 ~ page ~ pointable:", pointable);
 
   return (
     <div className=" flex flex-col items-start justify-start p-4 md:p-8  md:px-12">
